@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Available Cars to Rent</title>
+</head>
+<body>
+	<h1>Available Cars to Rent</h1>
+	<table>
+		<tr>
+			<th>Vehicle Model</th>
+			<th>Vehicle Number</th>
+			<th>Seating Capacity</th>
+			<th>Rent per Day</th>
+			<th>Actions</th>
+		</tr>
+		<?php
+			// code to fetch available cars from database
+			// replace this with your own code to fetch data from your database
+			// and display it in the table
+
+			// sample data for demonstration purposes
+			$cars = array(
+				array("Vehicle Model 1", "CAR001", 4, 100),
+				array("Vehicle Model 2", "CAR002", 6, 150),
+				array("Vehicle Model 3", "CAR003", 2, 75)
+			);
+
+			foreach ($cars as $car) {
+				echo "<tr>";
+				echo "<td>".$car[0]."</td>";
+				echo "<td>".$car[1]."</td>";
+				echo "<td>".$car[2]."</td>";
+				echo "<td>".$car[3]."</td>";
+				echo "<td>";
+				if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'customer') {
+					echo "<select name='days'>";
+					for ($i=1; $i<=10; $i++) {
+						echo "<option value='".$i."'>".$i."</option>";
+					}
+					echo "</select>";
+					echo "<input type='date' name='start_date'>";
+					echo "<button onclick='rentCar(\"".$car[1]."\")'>Rent Car</button>";
+				} else {
+					echo "Please login as a customer to rent this car";
+				}
+				echo "</td>";
+				echo "</tr>";
+			}
+		?>
+	</table>
+
+	<script>
+        function rentCar(vehicleNumber) {
+            // get the start date and number of days from the user
+            var startDate = prompt("Enter start date (dd/mm/yyyy):");
+            var numDays = prompt("Enter number of days to rent the car:");
+    
+            // send an AJAX request to the server to add the booking to the database
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // display a success message to the user
+                    alert("Car "+vehicleNumber+" rented successfully");
+                }
+            };
+            xhttp.open("GET", "add_booking.php?vehicleNumber="+vehicleNumber+"&startDate="+startDate+"&numDays="+numDays, true);
+            xhttp.send();
+        }
+    </script>
+    
+</body>
+</html>

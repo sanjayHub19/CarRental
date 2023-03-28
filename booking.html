@@ -1,0 +1,81 @@
+<!-- HTML code for the View booked cars page -->
+<html>
+	<head>
+		<title>View Booked Cars</title>
+		<link rel="stylesheet" href="car.css">
+	</head>
+	<body>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+			<div class="container">
+			  <a class="navbar-brand logo-text" href="Registration.html">CAR RENTAL AGENCY</a>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+	  
+				  <li class="nav-item">
+					<a class="nav-link" href="car.html">Car</a>
+				  </li>
+				  <li class="nav-item">
+					 <a class="nav-link" href="booking.html">Booking</a>
+				   </li>
+				   <li class="nav-item">
+					 <a class="nav-link" href="#programs">Car Rent</a>
+				   </li>
+				   <li class="nav-item">
+					 <a class="nav-link" href="#responsibility">New Car</a>
+				   </li>
+				</ul><a href="login.html">
+					<button class="btn-login" href="login.html">Login</button>
+				</a></div>
+			</div>
+		  </nav>
+		<h1>View Booked Cars</h1>
+
+		<!-- Display a dropdown list of available cars -->
+		<label for="car">Select Car:</label>
+		<select name="car" id="car">
+			<?php
+				// connect to the database
+				$conn = mysqli_connect('localhost', 'username', 'password', 'database_name');
+
+				// query to get the list of cars added by the agency
+				$sql = "SELECT vehicle_number, model FROM cars WHERE agency_id = ".$_SESSION['user_id'];
+
+				// execute the query
+				$result = mysqli_query($conn, $sql);
+
+				// loop through the results and display each car as an option in the dropdown
+				while ($row = mysqli_fetch_assoc($result)) {
+					echo '<option value="'.$row['vehicle_number'].'">'.$row['model'].' - '.$row['vehicle_number'].'</option>';
+				}
+
+				// close the database connection
+				mysqli_close($conn);
+			?>
+		</select>
+
+		<!-- Display the list of customers who have booked the selected car -->
+		<div id="bookings"></div>
+
+		<!-- Script to fetch the list of bookings for the selected car -->
+		<script>
+			document.getElementById('car').addEventListener('change', function() {
+				// get the selected car
+				var car = this.value;
+
+				// send an AJAX request to fetch the list of bookings for the selected car
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						// display the list of bookings in the 'bookings' div
+						document.getElementById('bookings').innerHTML = this.responseText;
+					}
+				};
+				xhttp.open("GET", "get_bookings.php?car="+car, true);
+				xhttp.send();
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add New Car</title>
+	<link rel="stylesheet" type="text/css" href="car.css">
+</head>
+<body>
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo-text" href="Registration.html">CAR RENTAL AGENCY</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+  
+              <li class="nav-item">
+                <a class="nav-link" href="car.html">Car</a>
+              </li>
+              <li class="nav-item">
+                 <a class="nav-link" href="booking.html">Booking</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#programs">Car Rent</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#responsibility">New Car</a>
+               </li>
+            </ul><a href="login.html">
+				<button class="btn-login" href="login.html">Login</button>
+			</a>  </div>
+        </div>
+      </nav>
+	<h1>Add New Car</h1>
+	<form id="add-car-form">
+		<label for="model">Vehicle model:</label>
+		<input type="text" id="model" name="model" required>
+		<label for="number">Vehicle number:</label>
+		<input type="text" id="number" name="number" required>
+		<label for="capacity">Seating capacity:</label>
+		<input type="number" id="capacity" name="capacity" required>
+		<label for="rent">Rent per day:</label>
+		<input type="number" id="rent" name="rent" required>
+		<input type="submit" value="Add Car">
+	</form>
+	<script src="car.js"></script>
+</body>
+</html>

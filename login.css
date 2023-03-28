@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Enriqueta&family=Sen&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  body{
+    position: relative;
+    height: 100%;
+    overflow-x: scroll;
+    
+    background: linear-gradient(180deg, #009EFD 0%, #2AF598 100%);
+    
+    
+  }
+  
+  .navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #009efd;
+  }
+  
+  .logo-text {
+    font-family: "Impact";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 59px;
+    color: #ffffff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .navbar .nav-link {
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: "Sen", sans-serif;
+    text-decoration: none;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    color: white !important;
+  }
+  
+  .navbar-light .navbar-toggler {
+    color: white;
+    border-color: white;
+  }
+  
+  .navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    color: white;
+  }
+  
+  
+  .navbar-nav .nav-link {
+    padding-right: 0.5 rem;
+    padding-left: 0.5 rem;
+  }
+  .btn-login {
+    color: white;
+    margin-left: 50px;
+    background: #2af598;
+    font-family: "Sen";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+   
